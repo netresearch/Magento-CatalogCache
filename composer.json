@@ -1,0 +1,14 @@
+{
+  "name": "netresearch/catalog-cache",
+  "license": "OSL-3.0",
+  "type": "magento-module",
+  "description": "Caching for Magento Catalog",
+  "homepage": "https://github.com/netresearch/Magento-CatalogCache",
+  "authors":[{
+    "name": "Netresearch",
+    "email": "info@netresearch.de"
+  }], 
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*"
+  }
+}

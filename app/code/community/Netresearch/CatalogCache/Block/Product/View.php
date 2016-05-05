@@ -56,7 +56,7 @@ class Netresearch_CatalogCache_Block_Product_View extends Mage_Catalog_Block_Pro
     public function getCacheLifetime()
     {
         if ($this->_isCacheActive()) {
-            return false;
+            return 60 * 30; //30min
         }
     }
 

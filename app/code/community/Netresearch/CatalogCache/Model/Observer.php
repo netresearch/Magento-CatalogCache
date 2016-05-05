@@ -36,6 +36,8 @@ class Netresearch_CatalogCache_Model_Observer
 {
     public function clearProductCache($observer)
     {
+        return;
+        
         $_product = $observer['item']->getProduct();
         if(trim(Mage::getStoreConfig('catalog/frontend/refresh_cache_when_stock_is')) == "") {
             $_product->cleanCache();
@@ -53,6 +55,28 @@ class Netresearch_CatalogCache_Model_Observer
                 $_product->cleanCache();
                 return;
             }
+        }
+    }
+
+    /**
+     * Clean review-related product cache
+     * 
+     * @param  Varien_Event_Observer $observer
+     * @return void
+     */
+    public function cleanProductCache($observer)
+    {
+        return;
+
+        $review = $observer->getEvent()->getObject();
+        $productId = $review->getEntityPkValue();
+        $product = Mage::getModel('catalog/product')->load(
+            $productId
+        );
+
+        if ($product instanceof Mage_Catalog_Model_Product
+            && $product->getId()) {
+            $product->cleanCache();
         }
     }
 }

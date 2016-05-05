@@ -65,17 +65,23 @@
         <catalogcache>
             <class>Netresearch_CatalogCache_Model</class>
         </catalogcache>
-        <review>
-            <rewrite>
-                <review>Netresearch_CatalogCache_Model_Review</review>
-            </rewrite>
-        </review>
         <tag>
             <rewrite>
                 <tag_relation>Netresearch_CatalogCache_Model_Tag_Relation</tag_relation>
             </rewrite>
         </tag>
-    </models>    
+    </models>
+    <events>
+        <review_save_after>
+            <observers>
+                <catalogcache_save_review_after>
+                    <type>singleton</type>
+                    <class>catalogcache/observer</class>
+                    <method>cleanProductCache</method>
+                </catalogcache_save_review_after>
+            </observers>
+        </review_save_after>
+    </events>
   </global>
   <frontend>
     <events>
